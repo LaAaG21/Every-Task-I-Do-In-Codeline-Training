@@ -1,0 +1,21 @@
+Error 1: Msg 1785, Level 16, State 0, Line 42
+Introducing FOREIGN KEY constraint 'FK__FLIGHT__TO_IATA__30F848ED' on table 'FLIGHT' may cause cycles or multiple cascade paths. Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints.
+Msg 1750, Level 16, State 1, Line 42
+Could not create constraint or index. See previous errors.
+
+
+ERROR DESCRIPTION: SQL Server does not allow conflicting cascade paths on multiple foreign keys referencing the same parent table, therefore ON DELETE/UPDATE NO ACTION must be used.
+
+
+How I Solve it: 
+From:
+FOREIGN KEY (TO_IATA)
+REFERENCES AIRPORT(IATA)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+
+To:
+FOREIGN KEY (TO_IATA)
+REFERENCES AIRPORT(IATA)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
